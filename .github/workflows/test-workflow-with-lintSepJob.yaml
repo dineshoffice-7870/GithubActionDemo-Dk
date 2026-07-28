@@ -2,7 +2,7 @@ name: test-workflow-lint
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   lint-sep-job:
     runs-on: ubuntu-latest
