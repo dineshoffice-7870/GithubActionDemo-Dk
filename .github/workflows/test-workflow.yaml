@@ -32,5 +32,10 @@ jobs:
           npm test
           echo "Tests completed"
 
+      - name: Buildapp
+        run: |
+          npm run build
+          echo "Build completed successfully"
+
 
 
