@@ -5,7 +5,23 @@ jobs:
   myfirst-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Test1
+      - name: TestStage-start
         run: |
-          echo "Running test"
-          echo "Test completed successfully"
+          echo "Starting test"
+      - name: DownloadCode
+        uses: actions/checkout@v6
+      - name: InstallDependencies
+        run: |
+          npm install
+          echo "Dependencies installed"
+      - name: RunLint
+        run: |
+          npm run lint
+          echo "Linting completed"
+      - name: RunTests
+        run: |
+          npm test
+          echo "Tests completed"
+
+
+
