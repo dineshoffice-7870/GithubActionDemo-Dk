@@ -3,6 +3,9 @@ on:
   workflow_dispatch:
 jobs:
   myfirst-job:
+    defaults:  
+      run:
+        working-directory: ./PracticeProj-1
     runs-on: ubuntu-latest
     steps:
       - name: TestStage-start
