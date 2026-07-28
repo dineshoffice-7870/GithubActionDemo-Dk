@@ -1,8 +1,7 @@
 name: LTD Workflow
 on:
-  push:
-    branches:
-      - main
+    workflow_dispatch:
+  
 jobs:
   ltd-job:
     runs-on: ubuntu-latest
