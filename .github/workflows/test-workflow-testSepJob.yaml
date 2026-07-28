@@ -1,0 +1,20 @@
+name: test-workflow-test
+on:
+  workflow_run:
+    workflows: ["test-workflow-lint"]
+    types: [completed]
+jobs:
+  Test-SepJob:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./PracticeProj-1
+    steps:
+      - name: download-code
+        uses: actions/checkout@v4
+      - name: setup-node
+        uses: actions/setup-node@v4
+      - name: Run-Tests
+        run: |
+          npm test
+          echo "Test completed"

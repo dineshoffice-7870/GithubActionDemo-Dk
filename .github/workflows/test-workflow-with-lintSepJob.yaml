@@ -1,0 +1,22 @@
+name: test-workflow-lint
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lint-sep-job:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./PracticeProj-1
+    steps:
+      - name: download-code
+        uses: actions/checkout@v4
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run-Lint
+        run: |
+          npm run lint
+          echo "Linting completed"

@@ -1,0 +1,23 @@
+name: test-workflow-build
+on:
+    workflow_run:
+        workflows: ["test-workflow-test"]
+        types: [completed]
+jobs:
+  Test-sep-job-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./PracticeProj-1
+    steps:
+      - name: download-code
+        uses: actions/checkout@v4
+      - name: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build-app
+        run: |
+          npm run build
+          echo "Build completed successfully"
+ 
