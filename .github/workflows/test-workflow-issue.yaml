@@ -1,0 +1,12 @@
+name: test-issue-workflow
+on:
+  issues:
+    types: [opened,edited,milestoned]
+jobs:
+  outputevent:
+    runs-on: ubuntu-latest
+    name: output-event
+    steps:
+      - name: Print event
+        run: |
+          echo "Event trigger: ${{ toJson(github.event) }}"
