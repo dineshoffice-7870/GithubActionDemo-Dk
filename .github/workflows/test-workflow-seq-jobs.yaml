@@ -1,0 +1,71 @@
+#Test workflow
+name: test-workflow-seq-jobs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Lint-job:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./PracticeProj-1
+
+    steps:
+      - name: DownloadCode
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: InstallDependencies
+        run: |
+          npm install
+          echo "Dependencies installed"
+      - name: RunLint
+        run: |
+          npm run lint
+          echo "Linting completed"
+  Test-job:
+    runs-on: ubuntu-latest
+    needs: Lint-job
+    defaults:
+      run:
+        working-directory: ./PracticeProj-1
+    steps:
+      - name: DownloadCode
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: InstallDependencies
+        run: |
+          npm install
+          echo "Dependencies installed"
+      - name: RunTests
+        run: |
+          npm test
+          echo "Tests completed"
+  Build-job:
+    runs-on: ubuntu-latest
+    needs: Test-job
+    defaults:
+      run:
+        working-directory: ./PracticeProj-1
+    steps:
+      - name: DownloadCode
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: InstallDependencies
+        run: |
+          npm install
+          echo "Dependencies installed"
+      - name: Buildapp
+        run: |
+          npm run build
+          echo "Build completed successfully"
+      
