@@ -1,6 +1,9 @@
-// PracticeProj-1/.eslintrc.cjs
 module.exports = {
-  env: { browser: true, es2021: true },
+  env: { 
+    browser: true, 
+    es2021: true,
+    jest: true, // <-- Adds support for describe, it, expect, test, etc.
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
