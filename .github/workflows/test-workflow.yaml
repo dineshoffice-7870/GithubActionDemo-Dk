@@ -8,11 +8,11 @@ jobs:
       run:
         working-directory: ./PracticeProj-1
     steps:
+      - name: DownloadCode
+        uses: actions/checkout@v4
       - name: TestStage-start
         run: |
           echo "Starting test"
-      - name: DownloadCode
-        uses: actions/checkout@v6
       - name: InstallDependencies
         run: |
           npm install
