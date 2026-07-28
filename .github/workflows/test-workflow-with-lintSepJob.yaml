@@ -16,6 +16,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: install-dependencies
+        run: |
+          npm install
+          echo "Dependencies installed"
+      
       - name: Run-Lint
         run: |
           npm run lint
